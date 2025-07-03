@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1064731019498",
+    "project_id": "last-kripto",
+    "storage_bucket": "last-kripto.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1064731019498:android:e72cdea1c56c6977baef93",
+        "android_client_info": {
+          "package_name": "com.example.last_kripto"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCy0pQpxazOYWw61T1hhPJ9N-hpghmNMkA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
