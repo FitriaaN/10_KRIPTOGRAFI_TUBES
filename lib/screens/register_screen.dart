@@ -27,7 +27,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   void _register() async {
     if (!_formKey.currentState!.validate()) return;
     setState(() => _isLoading = true);
-    await Future.delayed(const Duration(milliseconds: 500)); // Simulasi loading UI
+    await Future.delayed(const Duration(milliseconds: 500));
     // Enkripsi semua field
     final encryptedName = CustomEncryption.encrypt(_nameController.text.trim());
     final encryptedEmail = CustomEncryption.encrypt(_emailController.text.trim());
