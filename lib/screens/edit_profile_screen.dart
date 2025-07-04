@@ -17,7 +17,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
 
   void _save() async {
     setState(() => _isLoading = true);
-    await Future.delayed(const Duration(seconds: 1)); // Simulasi loading
+    await Future.delayed(const Duration(seconds: 1));
     setState(() => _isLoading = false);
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(content: Text('Profil berhasil diperbarui')),
