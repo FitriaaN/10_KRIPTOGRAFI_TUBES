@@ -5,14 +5,8 @@ import 'dart:typed_data';
 import 'dart:math';
 
 class CustomEncryption {
-  // THIS IS A SIMPLIFIED, ILLUSTRATIVE EXAMPLE. NOT FOR PRODUCTION USE.
-  // DO NOT USE THIS FOR REAL-WORLD SECURITY.
-
-  // Key should be 8 bytes (64 bits) for DES
-  // In a real app, this should be securely generated and managed, not hardcoded.
-  static const String _key = 'mysecret'; // 8-character key for illustration
-
-  // --- Simplified DES-like Core Functions ---
+  
+  static const String _key = 'mysecret';
 
   // Basic permutation (for illustration, not actual DES permutation)
   static List<int> _permute(List<int> input, List<int> permutationTable) {
@@ -66,13 +60,10 @@ class CustomEncryption {
       List<int> r = block.sublist(4, 8); // Last 4 bytes
 
       // Perform a few rounds of Feistel cipher (simplified)
-      for (int round = 0; round < 3; round++) { // 3 rounds for illustration
+      for (int round = 0; round < 3; round++) { 
         List<int> tempR = List.from(r); // Store current R
         List<int> roundKey = _generateRoundKey(keyBytes, round);
 
-        // Ensure roundKey matches size of r for XOR, if not, truncate/pad
-        // For this simple example, we'll just take the first 4 bytes of roundKey
-        // or pad it if shorter.
         List<int> effectiveRoundKey = List.from(roundKey);
         if (effectiveRoundKey.length > 4) {
           effectiveRoundKey = effectiveRoundKey.sublist(0, 4);
@@ -85,7 +76,7 @@ class CustomEncryption {
         l = tempR; // L_new = R_old
       }
 
-      // Combine L and R (swapped back for output)
+      // Combine L and R 
       encryptedBytes.addAll(r);
       encryptedBytes.addAll(l);
     }
@@ -102,16 +93,12 @@ class CustomEncryption {
     // Process in 8-byte blocks
     for (int i = 0; i < bytes.length; i += 8) {
       List<int> block = bytes.sublist(i, i + 8);
-
-      // Split into left (L_final) and right (R_final) halves
-      // Note: In encryption, the last swap gives R_final || L_final
-      // So, for decryption, we start with R_final as current R, and L_final as current L
-      List<int> r = block.sublist(0, 4); // This was L_new (L_final)
-      List<int> l = block.sublist(4, 8); // This was R_new (R_final)
+      List<int> r = block.sublist(0, 4); 
+      List<int> l = block.sublist(4, 8); 
 
       // Perform decryption rounds (reverse of encryption rounds)
-      for (int round = 2; round >= 0; round--) { // Reverse order of rounds
-        List<int> tempL = List.from(l); // Store current L
+      for (int round = 2; round >= 0; round--) { 
+        List<int> tempL = List.from(l); 
 
         List<int> roundKey = _generateRoundKey(keyBytes, round);
         List<int> effectiveRoundKey = List.from(roundKey);
