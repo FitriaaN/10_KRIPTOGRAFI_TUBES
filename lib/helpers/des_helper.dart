@@ -8,7 +8,7 @@ class CustomEncryption {
   
   static const String _key = 'mysecret';
 
-  // Basic permutation (for illustration, not actual DES permutation)
+  // Basic permutation 
   static List<int> _permute(List<int> input, List<int> permutationTable) {
     final List<int> output = List.filled(permutationTable.length, 0);
     for (int i = 0; i < permutationTable.length; i++) {
@@ -17,7 +17,7 @@ class CustomEncryption {
     return output;
   }
 
-  // XOR two lists of integers (representing bits/bytes)
+  // XOR two lists of integers 
   static List<int> _xor(List<int> a, List<int> b) {
     if (a.length != b.length) {
       throw ArgumentError('Lists must have the same length for XOR operation.');
@@ -25,7 +25,7 @@ class CustomEncryption {
     return List.generate(a.length, (i) => a[i] ^ b[i]);
   }
 
-  // Simple Feistel function (highly simplified)
+  // Simple Feistel function 
   // In real DES, this is complex with S-boxes, P-boxes, and key mixing.
   static List<int> _feistel(List<int> rightBlock, List<int> roundKey) {
     // For simplicity, let's just XOR the right block with the round key.
@@ -33,7 +33,7 @@ class CustomEncryption {
     return _xor(rightBlock, roundKey);
   }
 
-  // Generate a very simple round key from the main key (not DES key schedule)
+  // Generate a very simple round key from the main key 
   static List<int> _generateRoundKey(List<int> mainKey, int round) {
     // A simplistic way to vary the round key
     return mainKey.map((byte) => byte ^ round).toList();
@@ -61,7 +61,7 @@ class CustomEncryption {
 
       // Perform a few rounds of Feistel cipher (simplified)
       for (int round = 0; round < 3; round++) { 
-        List<int> tempR = List.from(r); // Store current R
+        List<int> tempR = List.from(r); 
         List<int> roundKey = _generateRoundKey(keyBytes, round);
 
         List<int> effectiveRoundKey = List.from(roundKey);
