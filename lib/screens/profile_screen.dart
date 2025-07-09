@@ -8,7 +8,7 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Data dummy
+    
     const userName = 'Nama Pengguna';
     const userEmail = 'user@email.com';
     const userPhone = '08123456789';
