@@ -4,8 +4,6 @@ import 'register_screen.dart';
 import 'package:last_kripto/widgets/app_button.dart';
 import 'package:last_kripto/utils/constants.dart';
 
-
-
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({Key? key}) : super(key: key);
 
@@ -101,7 +99,7 @@ class WelcomeScreen extends StatelessWidget {
                 title: const Text('Buyer'),
                 subtitle: const Text('Pesan makanan dari berbagai tenant'),
                 onTap: () {
-                  Navigator.pop(context); // Close dialog
+                  Navigator.pop(context); 
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => const RegisterScreen()),
@@ -114,7 +112,7 @@ class WelcomeScreen extends StatelessWidget {
                 title: const Text('Seller'),
                 subtitle: const Text('Jual makanan di QuickBites'),
                 onTap: () {
-                  Navigator.pop(context); // Close dialog
+                  Navigator.pop(context); 
                 },
               ),
             ],
