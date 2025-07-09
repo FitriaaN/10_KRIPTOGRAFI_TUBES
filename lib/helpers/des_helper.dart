@@ -1,14 +1,12 @@
 // lib/helpers/des_helper.dart
 
 import 'dart:convert';
-import 'dart:typed_data';
-import 'dart:math';
 
 class CustomEncryption {
   
   static const String _key = 'mysecret';
 
-  // Basic permutation 
+  // permutation 
   static List<int> _permute(List<int> input, List<int> permutationTable) {
     final List<int> output = List.filled(permutationTable.length, 0);
     for (int i = 0; i < permutationTable.length; i++) {
@@ -17,7 +15,7 @@ class CustomEncryption {
     return output;
   }
 
-  // XOR two lists of integers 
+  // XOR 
   static List<int> _xor(List<int> a, List<int> b) {
     if (a.length != b.length) {
       throw ArgumentError('Lists must have the same length for XOR operation.');
@@ -25,17 +23,11 @@ class CustomEncryption {
     return List.generate(a.length, (i) => a[i] ^ b[i]);
   }
 
-  // Simple Feistel function 
-  // In real DES, this is complex with S-boxes, P-boxes, and key mixing.
   static List<int> _feistel(List<int> rightBlock, List<int> roundKey) {
-    // For simplicity, let's just XOR the right block with the round key.
-    // In real DES, this involves expansion, S-boxes, permutation.
     return _xor(rightBlock, roundKey);
   }
 
-  // Generate a very simple round key from the main key 
   static List<int> _generateRoundKey(List<int> mainKey, int round) {
-    // A simplistic way to vary the round key
     return mainKey.map((byte) => byte ^ round).toList();
   }
 
